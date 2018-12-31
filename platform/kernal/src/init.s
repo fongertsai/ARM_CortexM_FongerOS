@@ -1,9 +1,11 @@
 
 
 	.section .text
-	.global	_Sys_Reset
+	.type	Sys_Reset, %function
+	.global	Sys_Reset
+	.global default_entry
 
-_Sys_Reset:
+Sys_Reset:
 	nop
 	nop
 	nop
@@ -18,3 +20,6 @@ _Sys_Reset:
 	mov	r2,	#2
 	mov	r3,	#3
 	mov	r4,	#4
+
+default_entry:
+	bl default_entry

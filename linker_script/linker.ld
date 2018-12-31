@@ -11,7 +11,8 @@ SECTIONS
 {
 	.text :
 	{
-		KEEP(*(.isr_vector))
+		KEEP(*(.isr_vector*))
+		. = . + 0x6000;
  		*(.text)
  		*(.text.*)
 		*(.rodata)

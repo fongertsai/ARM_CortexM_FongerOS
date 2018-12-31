@@ -6,5 +6,8 @@
 
 ISR_Vector:
 
-	.word _estack
-	.word _Sys_Reset
+	/*.word _estack */
+	.word Sys_Reset
+	.word Sys_Reset
+	.word default_entry
+

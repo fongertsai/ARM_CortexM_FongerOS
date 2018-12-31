@@ -22,6 +22,7 @@ LDFLAGS += -T../linker_script/linker.ld
 
 
 OBJS += ../platform/kernal/src/isr_vector.o
+#OBJS += ../platform/kernal/src/startup_stm32f10x_md.o
 OBJS += ../platform/kernal/src/init.o
 
 all: $(BIN_IMAGE)
@@ -44,3 +45,6 @@ clean:
 	rm $(OBJS)
 	rm -rf $(EXECUTABLE)
 	rm $(BIN_IMAGE)
+
+gdb:
+	qemu-system-arm -M stm32-p103 -kernel $(BIN_IMAGE) -s -S
