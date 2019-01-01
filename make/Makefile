@@ -17,13 +17,21 @@ CPU = cortex-m3
 CFLAGS = -mcpu=$(CPU)
 CFLAGS += -fno-common -O0 -g -mcpu=cortex-m3 -mthumb  -fno-stack-protector
 
+
 LDFLAGS += -T../linker_script/linker.ld
 
 
+CFLAGS += -I../platform/interface/inc
 
 OBJS += ../platform/kernal/src/isr_vector.o
-#OBJS += ../platform/kernal/src/startup_stm32f10x_md.o
 OBJS += ../platform/kernal/src/init.o
+
+
+# DRIVER #
+OBJS += ../platform/sys_drv/nvic/src/nvic.o
+CFLAGS += -I../platform/sys_drv/nvic/inc
+
+
 
 all: $(BIN_IMAGE)
 

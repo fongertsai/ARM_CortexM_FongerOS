@@ -1,4 +1,4 @@
-ENTRY(_Sys_Reset)
+ENTRY(Sys_Reset)
 
 MEMORY
 {
@@ -9,12 +9,16 @@ MEMORY
 
 SECTIONS
 {
-	.text :
+	.ISR_VECTOR :
 	{
 		KEEP(*(.isr_vector*))
-		. = . + 0x6000;
- 		*(.text)
- 		*(.text.*)
+		/* Reserve 0x150 for ISR vector */
+		. = 0x150;
+	} >FLASH
+
+	.text :
+	{
+ 		*(.text*)
 		*(.rodata)
 		_sidata = .;
 	} >FLASH
